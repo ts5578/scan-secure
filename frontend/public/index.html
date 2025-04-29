@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="ScanSecure - AI-powered code vulnerability scanner" />
+  
+  <!-- Favicon (generate your own at https://favicon.io) -->
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  
+  <!-- Manifest for PWA -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+  <title>ScanSecure | Code Vulnerability Scanner</title>
+  
+  <!-- Preconnect to backend -->
+  <link rel="preconnect" href="http://localhost:5000" />
+  
+  <!-- Fonts (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* Initial loading styles */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #f5f7fa;
+    }
+    
+    /* Loading animation */
+    #root {
+      min-height: 100vh;
+    }
+    
+    .app-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <!-- React root element -->
+  <div id="root">
+    <div class="app-loading">
+      <div>Loading ScanSecure...</div>
+    </div>
+  </div>
+  
+  <!--
+    This HTML file is a template.
+    The %PUBLIC_URL% will be replaced with the URL of the public folder during build.
+  -->
+  
+  <!-- Production error tracking (optional) -->
+  <script>
+    window.onerror = function(message, source, lineno, colno, error) {
+      if (process.env.NODE_ENV === 'production') {
+        // Send errors to your backend
+        fetch('/log-error', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: message,
+            stack: error?.stack,
+            componentStack: error?.componentStack,
+          }),
+        });
+      }
+    };
+  </script>
+</body>
+</html>
