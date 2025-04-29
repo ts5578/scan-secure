@@ -1,0 +1,9 @@
+flask
+flask-cors
+python-dotenv
+requests
+PyGithub
+google-generativeai
+torch
+transformers
+werkzeug
